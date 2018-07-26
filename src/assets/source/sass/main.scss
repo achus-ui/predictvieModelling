@@ -1,0 +1,115 @@
+* {
+    outline: none;
+}
+
+input,
+textarea,
+select,
+a {
+    &:focus,
+    &:hover,
+    &:active {
+        outline: none !important;
+        box-shadow: none !important;
+    }
+}
+
+.form-group {
+    &.required {
+        position: relative;
+        input {
+            padding-right: 25px !important;
+        }
+        &:after {
+            content: "*";
+            color: red;
+        }
+    }
+}
+
+select {
+    text-transform: capitalize;
+}
+
+input {
+    text-transform: capitalize;
+    &[type="email"] {
+        text-transform: none;
+    }
+    &+span {
+        color: red !important;
+        font-size: fontSize(-4px);
+    }
+}
+
+input.ng-invalid {
+    border-color: red !important;
+    &.ng-untouched {
+        border-color: #d5d5d5 !important;
+    }
+}
+
+textarea {
+    resize: none;
+}
+
+body {
+    margin: auto;
+    padding: 0 !important;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    overflow-x: hidden;
+}
+
+.navbar {
+    background: #ddd;
+    padding: .1rem 1rem;
+    img {
+        width: 137px;
+    }
+}
+
+.content-area {
+    width: 100%;
+    height: calc(100vh - 60.93px);
+    margin-top: 60.93px;
+    .sidenav {
+        width: 5%;
+        height: 100%;
+        position: fixed;
+        left: 0;
+        top: 60.93px;
+        background: #ececec;
+        ul.menus {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            li {
+                font-size: 24px;
+                padding: 5px 0;
+                color: #6f6f6f;
+                cursor: pointer;
+                &.active {
+                    color: #ff6204;
+                }
+            }
+        }
+    }
+    .content {
+        width: 95%;
+        height: calc(100vh - 60.93px);
+        float: right;
+        overflow-y: auto;
+        padding: 25px;
+        .variable-table {
+            td,
+            th {
+                vertical-align: middle;
+            }
+        }
+    }
+}
