@@ -6,7 +6,7 @@ import { BusinessvariablesComponent } from './businessvariables/businessvariable
 
 const appRoutes: Routes = [
     {path: '', component: HomeComponent},
-    {path: 'early-warning', component: EarlywarningComponent},
+    {path: 'solution-details', component: EarlywarningComponent},
     {path: 'business-variables', component: BusinessvariablesComponent}
 ]
 

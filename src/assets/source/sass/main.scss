@@ -93,8 +93,19 @@ body {
                 padding: 5px 0;
                 color: #6f6f6f;
                 cursor: pointer;
-                &.active {
+                transition: all 0.3s ease-in-out;
+                &.active,
+                &:hover {
+                    transition: all 0.3s ease-in-out;
                     color: #ff6204;
+                }
+                &.title {
+                    font-size: 13px;
+                    align-self: flex-start;
+                    width: 100%;
+                    text-align: center;
+                    background: #007bff;
+                    color: #fff;
                 }
             }
         }
@@ -105,11 +116,126 @@ body {
         float: right;
         overflow-y: auto;
         padding: 25px;
+        ul.tiles {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: space-between;
+            li {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                padding: 0;
+                flex-basis: 40%;
+                cursor: pointer;
+                &:last-child {
+                    i {
+                        background: red;
+                    }
+                }
+                i {
+                    width: 80px;
+                    height: 80px;
+                    position: absolute;
+                    top: 25px;
+                    background: #fb6f1a;
+                    border-radius: 50%;
+                    line-height: 80px;
+                    color: #fff;
+                    font-size: 30px;
+                }
+                .info {
+                    padding: 40px 20px 20px 20px;
+                    background: #289EE0;
+                    color: #fff;
+                    margin-top: 60px;
+                }
+            }
+        }
+        ul.breadcrumbs {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0 0 15px 0;
+            li {
+                font-size: 16px;
+                font-weight: 600;
+                i {
+                    margin: 0 15px;
+                }
+            }
+        }
+        ul.category-tiles {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            li {
+                min-width: 15%;
+                border: 1px solid #f67f37;
+                padding: 20px 60px 20px 10px;
+                margin: 0 15px 20px 0;
+                position: relative;
+                cursor: pointer;
+                transition: all 0.3s ease-in-out;
+                font-weight: 600;
+                text-transform: uppercase;
+                font-size: 14px;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+                display: inline-table;
+                &:before {
+                    content: "";
+                    width: 0;
+                    height: 102%;
+                    background: #f67f37;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    transition: all 0.3s ease-in-out;
+                    z-index: -1;
+                }
+                &:hover {
+                    color: #fff;
+                    &:before {
+                        transition: all 0.3s ease-in-out;
+                        width: 100%;
+                    }
+                }
+                i {
+                    width: 50px;
+                    height: 102%;
+                    text-align: center;
+                    line-height: 66px;
+                    font-size: 30px;
+                    background: #f67f37;
+                    color: #fff;
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                }
+            }
+        }
         .variable-table {
+            margin-top: 50px;
             td,
             th {
                 vertical-align: middle;
             }
+        }
+        span.back {
+            position: absolute;
+            right: 0;
+            top: -30px;
+            padding: 0px 20px;
+            background: #007bff;
+            border-radius: 3px;
+            color: #fff;
+            text-transform: uppercase;
+            cursor: pointer;
         }
     }
 }

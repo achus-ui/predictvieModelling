@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-sidenav',
@@ -6,7 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidenavComponent implements OnInit {
 
-  constructor() { }
+  public showHideNav: boolean = true;
+
+  constructor(public location: Location) {
+  }
 
   ngOnInit() {
   }

@@ -1,8 +1,14 @@
-<aside class="sidenav">
+<aside class="sidenav" *ngIf="this.location.path() != ''">
   <ul class="menus">
-    <li [routerLink]="['']"><i class="fas fa-home"></i></li>
-    <li [routerLink]="['/early-warning']"><i class="fas fa-globe"></i></li>
-    <li [routerLink]="['/business-variables']"><i class="fas fa-database"></i></li>
+    <li [routerLink]="['']" [ngClass]="{'active': this.location.path() == ''}"><i class="fas fa-home"></i></li>
+    <li [ngClass]="{'active': this.location.path() == '/solution-details'}"><i class="fas fa-globe"></i></li>
+    <li [routerLink]="['/business-variables']" [ngClass]="{'active': this.location.path() == '/business-variables'}"><i class="fas fa-database"></i></li>
     <li><i class="fas fa-suitcase"></i></li>
+    <li class="title">Test Model</li>
+    <li style="pointer-events: none; opacity: 0.5;"><i class="far fa-check-circle"></i></li>
+    <li style="pointer-events: none; opacity: 0.5;"><i class="fas fa-edit"></i></li>
+    <li style="pointer-events: none; opacity: 0.5;"><i class="fas fa-bezier-curve"></i></li>
+    <li class="title">Predict</li>
+    <li style="pointer-events: none; opacity: 0.5;"><i class="fas fa-list-ul"></i></li>
   </ul>
 </aside>

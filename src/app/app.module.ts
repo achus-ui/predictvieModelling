@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -9,6 +10,11 @@ import { HomeComponent } from './home/home.component';
 import { EarlywarningComponent } from './earlywarning/earlywarning.component';
 import { BusinessvariablesComponent } from './businessvariables/businessvariables.component';
 
+import { AppConfigService } from './shared/app-config.service';
+import { SolutionService } from './shared/solution.service';
+import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
+import { VariablecollectiveService } from './shared/variablecollective.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,13 +22,19 @@ import { BusinessvariablesComponent } from './businessvariables/businessvariable
     SidenavComponent,
     HomeComponent,
     EarlywarningComponent,
-    BusinessvariablesComponent
+    BusinessvariablesComponent,
+    BreadcrumbsComponent
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    AppConfigService,
+    SolutionService, 
+    VariablecollectiveService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

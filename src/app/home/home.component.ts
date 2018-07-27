@@ -1,15 +1,37 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { SolutionService } from '../shared/solution.service';
 
 @Component({
   selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  templateUrl: './home.component.html'
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  public solutionList: any[] = [];
+
+  constructor(
+    private router: Router,
+    private solutionService: SolutionService) { }
 
   ngOnInit() {
+    this.getSolutionList();
+  }
+
+  getSolutionList() {
+    this.solutionService.getSolutionList()
+      .subscribe(
+        (data) => {
+          this.solutionList = data['mart'];
+        }
+      );
+  }
+
+  goToSolutionDetails(solutionName, solutionDesc) {
+    this.solutionService.solutionDetails.name = solutionName;
+    this.solutionService.solutionDetails.desc = solutionDesc;
+    this.router.navigate(['/solution-details']);
   }
 
 }

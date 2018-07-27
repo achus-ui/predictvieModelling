@@ -1,2 +1,11 @@
-<h1>Home Content Header</h1>
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto aperiam deserunt incidunt labore quam. Qui sapiente corrupti, quia reiciendis natus illum deleniti, maiores odio omnis quaerat voluptatibus nemo sunt minima.</p>
+<ul class="tiles">
+    <li
+        (click)="goToSolutionDetails(solution.model_nm,solution.model_long_desc)" 
+        *ngFor="let solution of solutionList">
+        <i class="fas fa-exclamation-triangle"></i>
+        <div class="info">
+            <h2>{{ solution.model_nm }}</h2>
+            <p>{{ solution.model_short_desc }}</p>
+        </div>
+    </li>
+</ul>

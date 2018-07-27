@@ -1,5 +1,66 @@
-<h1>Business Variables</h1>
-<table class="table variable-table">
+<app-breadcrumbs></app-breadcrumbs>
+<ul
+  *ngIf="showCategoryTiles"
+  class="category-tiles"
+  >
+  <li
+    (click)="drillDownVarCategory(
+      variable.model_var_nm, 
+      variable.model_var_desc, 
+      variable.model_var_form, 
+      variable.model_var_type, 
+      variable.model_var_importance,
+      variable.model_var_outlier_rule,
+      variable.model_var_mv_rule)"
+    *ngFor="let variable of varaibleCollectiveService"
+    >{{ variable.model_var_category }} <i class="fas fa-angle-right"></i></li>
+</ul>
+
+<table 
+  *ngIf="!showCategoryTiles"
+  class="table variable-table table-bordered" 
+  style="width: 50%; position: relative;">
+  <span 
+    (click)="goToCategoryTiles()"
+    class="back">back</span>
+  <thead>
+    <tr>
+      <th scope="col">Key Name</th>
+      <th scope="col">Column Name of Table on screen</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>model_var_nm</td>
+      <td>{{ varName }}</td>
+    </tr>
+    <tr>
+      <td>model_var_desc</td>
+      <td>{{ varDesc }}</td>
+    </tr>
+    <tr>
+      <td>model_var_form</td>
+      <td>{{ varForm }}</td>
+    </tr>
+    <tr>
+      <td>model_var_type</td>
+      <td>{{ varType }}</td>
+    </tr>
+    <tr>
+      <td>model_var_importance</td>
+      <td>{{ varImportance }}</td>
+    </tr>
+    <tr>
+      <td>model_var_outlier_rule</td>
+      <td>{{ varOutlier }}</td>
+    </tr>
+    <tr>
+      <td>model_var_mv_rule</td>
+      <td>{{ varMv }}</td>
+    </tr>
+  </tbody>
+</table>
+<!-- <table class="table variable-table">
   <thead>
     <tr>
       <th scope="col">Variable Name</th>
@@ -44,4 +105,4 @@
       <td>XXWWRR</td>
     </tr>
   </tbody>
-</table>
+</table> -->
