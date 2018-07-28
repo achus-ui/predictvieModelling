@@ -1,0 +1,59 @@
+<app-breadcrumbs></app-breadcrumbs>
+<ul
+  *ngIf="showCategoryTiles"
+  class="category-tiles">
+  <li 
+    *ngFor="let variable of varaibleCollectiveService"
+    [ngClass]="{'d-none': variable.model_var_state === 'Input'}"
+    (click)="drillDownVarCategory(
+      variable.model_var_nm, 
+      variable.model_var_desc,
+      variable.model_var_form,
+      variable.model_var_importance,
+      variable.model_derived_var_base_var,
+      variable.model_derived_var_rule,
+      variable.model_var_outlier_rule,
+      variable.model_var_mv_rule
+    )">{{ variable.model_var_category }}
+    <i class="fas fa-angle-right"></i>
+  </li>
+</ul>
+
+<table 
+  *ngIf="!showCategoryTiles"
+  class="table variable-table table-bordered" style="position: relative;">
+  <span (click)="goToCategoryTiles()" class="back">back</span>
+  <colgroup>
+    <col style="width: 10%;">
+    <col style="width: 15%;">
+    <col style="width: 10%;">
+    <col style="width: 10%;">
+    <col style="width: 10%;">
+    <col style="width: 15%;">
+    <col style="width: 15%;">
+  </colgroup>
+  <thead>
+    <tr>
+      <th scope="col">Feature Name</th>
+      <th scope="col">Feature Description</th>
+      <th scope="col">Feature Form</th>
+      <th scope="col">Feature Importance</th>
+      <th scope="col">Feature Base Variable</th>
+      <th scope="col">Feature Derivation Rule</th>
+      <th scope="col">Outlier Treatment</th>
+      <th scope="col">Missing Value Treatment</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{ varName }}</td>
+      <td>{{ varDesc }}</td>
+      <td>{{ varForm }}</td>
+      <td>{{ varImportance }}</td>
+      <td>{{ varDerivedBase }}</td>
+      <td>{{ varDerivedRule }}</td>
+      <td>{{ varOutlier }}</td>
+      <td>{{ varMv }}</td>
+    </tr>
+  </tbody>
+</table>

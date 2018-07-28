@@ -14,6 +14,9 @@ import { AppConfigService } from './shared/app-config.service';
 import { SolutionService } from './shared/solution.service';
 import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 import { VariablecollectiveService } from './shared/variablecollective.service';
+import { FeatureengineeringComponent } from './featureengineering/featureengineering.component';
+import { ModeltechniqueComponent } from './modeltechnique/modeltechnique.component';
+import { ModeltechniqueService } from './shared/modeltechnique.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,9 @@ import { VariablecollectiveService } from './shared/variablecollective.service';
     HomeComponent,
     EarlywarningComponent,
     BusinessvariablesComponent,
-    BreadcrumbsComponent
+    BreadcrumbsComponent,
+    FeatureengineeringComponent,
+    ModeltechniqueComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +38,8 @@ import { VariablecollectiveService } from './shared/variablecollective.service';
   providers: [
     AppConfigService,
     SolutionService, 
-    VariablecollectiveService
+    VariablecollectiveService,
+    ModeltechniqueService
   ],
   bootstrap: [AppComponent]
 })

@@ -19,90 +19,39 @@
 <table 
   *ngIf="!showCategoryTiles"
   class="table variable-table table-bordered" 
-  style="width: 50%; position: relative;">
+  style="position: relative;">
   <span 
     (click)="goToCategoryTiles()"
     class="back">back</span>
+  <colgroup>
+    <col style="width: 10%;">
+    <col style="width: 15%;">
+    <col style="width: 10%;">
+    <col style="width: 10%;">
+    <col style="width: 10%;">
+    <col style="width: 15%;">
+    <col style="width: 15%;">
+  </colgroup>
   <thead>
     <tr>
-      <th scope="col">Key Name</th>
-      <th scope="col">Column Name of Table on screen</th>
+      <th scope="col">Variable Name</th>
+      <th scope="col">Variable Description</th>
+      <th scope="col">Variable Form</th>
+      <th scope="col">Variable Type</th>
+      <th scope="col">Variable Importance</th>
+      <th scope="col">Outlier Treatment</th>
+      <th scope="col">Missing Value Treatment</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>model_var_nm</td>
       <td>{{ varName }}</td>
-    </tr>
-    <tr>
-      <td>model_var_desc</td>
       <td>{{ varDesc }}</td>
-    </tr>
-    <tr>
-      <td>model_var_form</td>
       <td>{{ varForm }}</td>
-    </tr>
-    <tr>
-      <td>model_var_type</td>
       <td>{{ varType }}</td>
-    </tr>
-    <tr>
-      <td>model_var_importance</td>
       <td>{{ varImportance }}</td>
-    </tr>
-    <tr>
-      <td>model_var_outlier_rule</td>
       <td>{{ varOutlier }}</td>
-    </tr>
-    <tr>
-      <td>model_var_mv_rule</td>
       <td>{{ varMv }}</td>
     </tr>
   </tbody>
 </table>
-<!-- <table class="table variable-table">
-  <thead>
-    <tr>
-      <th scope="col">Variable Name</th>
-      <th scope="col" style="width: 25%;">Variable Descriptions & Rationale</th>
-      <th scope="col">Variable Importance</th>
-      <th scope="col">Data Protection Rules</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Variable 1</td>
-      <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut illum perspiciatis debitis illo perferendis ex tenetur similique ducimus rerum. Animi porro dignissimos doloribus cumque quod ea magni placeat minus dicta!</td>
-      <td>Data will come here</td>
-      <td>XXWWRR</td>
-    </tr>
-    <tr>
-      <td>Variable 1</td>
-      <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut illum perspiciatis debitis illo perferendis ex tenetur similique
-        ducimus rerum. Animi porro dignissimos doloribus cumque quod ea magni placeat minus dicta!</td>
-      <td>Data will come here</td>
-      <td>XXWWRR</td>
-    </tr>
-    <tr>
-      <td>Variable 1</td>
-      <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut illum perspiciatis debitis illo perferendis ex tenetur similique
-        ducimus rerum. Animi porro dignissimos doloribus cumque quod ea magni placeat minus dicta!</td>
-      <td>Data will come here</td>
-      <td>XXWWRR</td>
-    </tr>
-    <tr>
-      <td>Variable 1</td>
-      <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut illum perspiciatis debitis illo perferendis ex tenetur similique
-        ducimus rerum. Animi porro dignissimos doloribus cumque quod ea magni placeat minus dicta!</td>
-      <td>Data will come here</td>
-      <td>XXWWRR</td>
-    </tr>
-    <tr>
-      <td>Variable 1</td>
-      <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut illum perspiciatis debitis illo perferendis ex tenetur similique
-        ducimus rerum. Animi porro dignissimos doloribus cumque quod ea magni placeat minus dicta!</td>
-      <td>Data will come here</td>
-      <td>XXWWRR</td>
-    </tr>
-  </tbody>
-</table> -->

@@ -1,0 +1,15 @@
+<app-breadcrumbs></app-breadcrumbs>
+<table class="table variable-table table-bordered" style="width: 50%">
+  <thead>
+    <tr>
+      <th scope="col">Model Technique Name</th>
+      <th scope="col">Model Technique Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let technique of modelTechnique">
+      <td>{{ technique.model_technique_nm }}</td>
+      <td>{{ technique.model_technique_desc }}</td>
+    </tr>
+  </tbody>
+</table>
