@@ -128,8 +128,9 @@ body {
                 justify-content: center;
                 align-items: center;
                 text-align: center;
-                padding: 0;
                 flex-basis: 40%;
+                background: #289EE0;
+                padding: 20px;
                 cursor: pointer;
                 &:last-child {
                     i {
@@ -139,8 +140,6 @@ body {
                 i {
                     width: 80px;
                     height: 80px;
-                    position: absolute;
-                    top: 25px;
                     background: #fb6f1a;
                     border-radius: 50%;
                     line-height: 80px;
@@ -148,10 +147,7 @@ body {
                     font-size: 30px;
                 }
                 .info {
-                    padding: 40px 20px 20px 20px;
-                    background: #289EE0;
                     color: #fff;
-                    margin-top: 60px;
                 }
             }
         }
@@ -173,10 +169,12 @@ body {
             padding: 0;
             margin: 0;
             li {
-                min-width: 15%;
+                width: 20%;
+                float: left;
                 border: 1px solid #f67f37;
+                border-right: 0;
                 padding: 20px 60px 20px 10px;
-                margin: 0 15px 20px 0;
+                margin: 7px 10px;
                 position: relative;
                 cursor: pointer;
                 transition: all 0.3s ease-in-out;
@@ -186,7 +184,6 @@ body {
                 text-overflow: ellipsis;
                 white-space: nowrap;
                 overflow: hidden;
-                display: inline-table;
                 &:before {
                     content: "";
                     width: 0;
