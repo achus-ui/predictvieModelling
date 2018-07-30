@@ -1,15 +1,102 @@
 <app-breadcrumbs></app-breadcrumbs>
-<table class="table table-bordered" style="width: 50%">
-  <thead>
-    <tr>
-      <th scope="col">Model Technique Name</th>
-      <th scope="col">Model Technique Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let technique of modelTechnique">
-      <td>{{ technique.model_technique_nm }}</td>
-      <td>{{ technique.model_technique_desc }}</td>
-    </tr>
-  </tbody>
-</table>
+<section class="model-technique">
+  <div class="row">
+    <div class="col-md-3">
+      <ul class="technique-tiles">
+        <li
+          (click)="onShowTechDetails(technique)"
+          [ngClass]="{'active': getModelTechFirst.model_technique_nm === technique.model_technique_nm}"
+          *ngFor="let technique of modelTechnique">{{ technique.model_technique_nm }}
+          <i class="fas fa-angle-right"></i>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-8 offset-md-1">
+      <h2>{{ getModelTechFirst.model_technique_nm }}</h2>
+      <accordion [closeOthers]="oneAtATime">
+        <accordion-group 
+          [isOpen]="isFirstOpen"
+          heading="Filters">
+          <table class="table table-bordered">
+            <tbody>
+              <tr>
+                <th>Time Dimension</th>
+                <td>{{ getModelTechFirst.model_filters_time_dim }}</td>
+              </tr>
+              <tr>
+                <th>Non-Time Dimension</th>
+                <td>{{ getModelTechFirst.model_filters_non_time_dim }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </accordion-group>
+        <accordion-group heading="Sampling">
+          <table class="table table-bordered">
+            <tbody>
+              <tr>
+                <th>Sampling Criteria</th>
+                <td>{{ getModelTechFirst.model_sampling_criteria }}</td>
+              </tr>
+              <tr>
+                <th>Stratification Criteria</th>
+                <td>getModelTechFirst.model_sampling_stratification_criteria</td>
+              </tr>
+              <tr>
+                <th>Replacement Criteria</th>
+                <td>{{ getModelTechFirst.model_sampling_replacement_criteria }}</td>
+              </tr>
+              <tr>
+                <th>Training Sample</th>
+                <td>{{ getModelTechFirst.model_sampling_training_sample }}</td>
+              </tr>
+              <tr>
+                <th>Testing Sample</th>
+                <td>{{ getModelTechFirst.model_sampling_testing_sample }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </accordion-group>
+        <accordion-group heading="Parameters">
+          <table class="table table-bordered">
+            <tbody>
+              <tr>
+                <th>K-fold validation Paramater</th>
+                <td>{{ getModelTechFirst.model_parameters_kfold_valid_parameter }}</td>
+              </tr>
+              <tr>
+                <th>Family</th>
+                <td>{{ getModelTechFirst.model_parameters_family }}</td>
+              </tr>
+              <tr>
+                <th>Number of trees</th>
+                <td>{{ getModelTechFirst.model_parameters_no_tress }}</td>
+              </tr>
+              <tr>
+                <th>mtry(No. of variables tried at each split)</th>
+                <td>{{ getModelTechFirst.model_parameters_mtry }}</td>
+              </tr>
+              <tr>
+                <th>Node Size</th>
+                <td>{{ getModelTechFirst.model_parameters_node_size }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </accordion-group>
+        <accordion-group heading="Output">
+          <table class="table table-bordered">
+            <tbody>
+              <tr>
+                <th>Importance</th>
+                <td>{{ getModelTechFirst.model_output_importance }}</td>
+              </tr>
+              <tr>
+                <th>Fractions</th>
+                <td>{{ getModelTechFirst.model_output_fractions }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </accordion-group>
+      </accordion>
+    </div>
+  </div>
+</section>

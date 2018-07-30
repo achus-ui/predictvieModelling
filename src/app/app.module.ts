@@ -10,6 +10,8 @@ import { HomeComponent } from './home/home.component';
 import { EarlywarningComponent } from './earlywarning/earlywarning.component';
 import { BusinessvariablesComponent } from './businessvariables/businessvariables.component';
 
+import { AccordionModule } from 'ngx-bootstrap/accordion';
+
 import { AppConfigService } from './shared/app-config.service';
 import { SolutionService } from './shared/solution.service';
 import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
@@ -33,7 +35,8 @@ import { ModeltechniqueService } from './shared/modeltechnique.service';
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AccordionModule.forRoot()
   ],
   providers: [
     AppConfigService,
