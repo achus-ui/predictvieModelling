@@ -13,7 +13,7 @@ export class VariablecollectiveService {
   ) { }
 
   getVariableCollectiveDetails() {
-    return this.httpClient.get(this.urlConfig.constants.baseUrl + 'getinfo?of=10&i=0&type=mart&id=' + this.urlConfig.constants.martId +'&t='+ this.urlConfig.constants.token +'&tablename=nbmdc_model_variables');
+    return this.httpClient.get(this.urlConfig.constants.baseUrl + 'getinfo?of=50&i=0&type=mart&id=' + this.urlConfig.constants.martId +'&t='+ this.urlConfig.constants.token +'&tablename=nbmdc_model_variables');
   }
 
 

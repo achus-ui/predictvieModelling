@@ -8,16 +8,11 @@ import { VariablecollectiveService } from '../shared/variablecollective.service'
 export class FeatureengineeringComponent implements OnInit {
 
   public variableCollectiveDetails: any[] = [];
+  public variableCollectiveDetailsUnique: any[] = [];
+  public variableTableListing: any[] = [];
+  public selectedItem: string = '';
+  public showOnlyDerived: any[] = [];
   public showCategoryTiles: boolean = false;
-
-  public varName = '';
-  public varDesc = '';
-  public varForm = '';
-  public varImportance = '';
-  public varDerivedBase = '';
-  public varDerivedRule = '';
-  public varOutlier = '';
-  public varMv = '';
 
   constructor(
     private varaibleCollectiveService: VariablecollectiveService
@@ -31,26 +26,31 @@ export class FeatureengineeringComponent implements OnInit {
     this.varaibleCollectiveService.getVariableCollectiveDetails()
       .subscribe(
         (data) => {
-          this.varaibleCollectiveService = data['mart'];
-          this.showCategoryTiles = true;
+          this.variableCollectiveDetailsUnique = data['mart'].reduce((unique, o) => {
+            if (!unique.some(obj => obj.model_var_state === o.model_var_state)) {
+              unique.push(o);
+            }
+            return unique;
+          }, []);
+          this.variableCollectiveDetails = data['mart'];
+          this.selectedItem = this.variableCollectiveDetailsUnique[0].model_var_category;
+          for (let i = 0; i < this.variableCollectiveDetailsUnique.length; i++) {
+            if (this.variableCollectiveDetailsUnique[i].model_var_category === this.variableCollectiveDetailsUnique[0].model_var_category) {
+              this.variableTableListing.push(this.variableCollectiveDetails[i])
+            }
+          }
         }
       );
   }
 
-  drillDownVarCategory(varName, varDesc, varForm, varImportance, varDerivedBase, varDerivedRule, varOutlier, varMv) {
-    this.varName = varName;
-    this.varDesc = varDesc;
-    this.varForm = varForm;
-    this.varImportance = varImportance;
-    this.varDerivedBase = varDerivedBase;
-    this.varDerivedRule = varDerivedRule;
-    this.varOutlier = varOutlier;
-    this.varMv = varMv;
-    this.showCategoryTiles = false;
-  }
-
-  goToCategoryTiles() {
-    this.showCategoryTiles = true;
+  drillDownVarCategory(getCategory) {
+    this.variableTableListing = [];
+    this.selectedItem = getCategory;
+    for (let i = 0; i < this.variableCollectiveDetailsUnique.length; i++) {
+      if (this.variableCollectiveDetailsUnique[i].model_var_category === getCategory) {
+        this.variableTableListing.push(this.variableCollectiveDetails[i])
+      }
+    }
   }
 
 }

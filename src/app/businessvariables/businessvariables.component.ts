@@ -8,6 +8,9 @@ import { VariablecollectiveService } from '../shared/variablecollective.service'
 export class BusinessvariablesComponent implements OnInit {
 
   public variableCollectiveDetails: any[] = [];
+  public variableCollectiveDetailsUnique: any[] = [];
+  public variableTableListing: any[] = [];
+  public selectedItem: string = '';
   public showCategoryTiles: boolean = false;
   public varName = '';
   public varDesc = '';
@@ -29,21 +32,31 @@ export class BusinessvariablesComponent implements OnInit {
     this.varaibleCollectiveService.getVariableCollectiveDetails()
       .subscribe(
         (data) => {
-          this.varaibleCollectiveService = data['mart'];
-          this.showCategoryTiles = true;
+          this.variableCollectiveDetailsUnique = data['mart'].reduce((unique, o) => {
+            if (!unique.some(obj => obj.model_var_category === o.model_var_category)) {
+              unique.push(o);
+            }
+            return unique;
+          }, []);
+          this.variableCollectiveDetails = data['mart'];
+          this.selectedItem = this.variableCollectiveDetailsUnique[0].model_var_category;
+          for (let i = 0; i < this.variableCollectiveDetails.length; i++) {
+            if (this.variableCollectiveDetails[i].model_var_category === this.variableCollectiveDetailsUnique[0].model_var_category) {
+              this.variableTableListing.push(this.variableCollectiveDetails[i])
+            }
+          }
         }
       );
   }
 
-  drillDownVarCategory(varName, varDesc, varForm, varType, varImportance, varOutlier, varMv) {
-    this.varName = varName;
-    this.varDesc = varDesc;
-    this.varForm = varForm;
-    this.varType = varType;
-    this.varImportance = varImportance;
-    this.varOutlier = varOutlier;
-    this.varMv = varMv;
-    this.showCategoryTiles = false;
+  drillDownVarCategory(getCategory) {
+    this.variableTableListing = [];
+    this.selectedItem = getCategory;
+    for(let i = 0; i < this.variableCollectiveDetails.length; i++) {
+      if (this.variableCollectiveDetails[i].model_var_category === getCategory) {
+        this.variableTableListing.push(this.variableCollectiveDetails[i])
+      }
+    }
   }
 
   goToCategoryTiles() {

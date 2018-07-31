@@ -13,6 +13,7 @@ export class ModeltechniqueComponent implements OnInit, DoCheck {
     row_id: '',
     si_id: '',
     model_technique_nm: '',
+    model_technique_desc: '',
     model_filters_time_dim: '',
     model_filters_non_time_dim: '',
     model_sampling_criteria: '',
@@ -33,6 +34,7 @@ export class ModeltechniqueComponent implements OnInit, DoCheck {
     row_id: '',
     si_id: '',
     model_technique_nm: '',
+    model_technique_desc: '',
     model_filters_time_dim: '',
     model_filters_non_time_dim: '',
     model_sampling_criteria: '',
@@ -70,24 +72,25 @@ export class ModeltechniqueComponent implements OnInit, DoCheck {
       .subscribe(
         (data) => {
           this.modelTechnique = data['mart'];
-          this.getModelTechFirst.model_technique_nm = this.modelTechnique[0]['model_technique_nm'];
-          this.getModelTechFirst.model_filters_time_dim = this.modelTechnique[0]['model_filters_time_dim'];
-          this.getModelTechFirst.model_filters_non_time_dim = this.modelTechnique[0]['model_filters_non_time_dim'];
+          this.getModelTechFirst.model_technique_nm = this.modelTechnique[1]['model_technique_nm'];
+          this.getModelTechFirst.model_technique_desc = this.modelTechnique[1]['model_technique_desc'];
+          this.getModelTechFirst.model_filters_time_dim = this.modelTechnique[1]['model_filters_time_dim'];
+          this.getModelTechFirst.model_filters_non_time_dim = this.modelTechnique[1]['model_filters_non_time_dim'];
 
-          this.getModelTechFirst.model_sampling_criteria = this.modelTechnique[0]['model_sampling_criteria'];
-          this.getModelTechFirst.model_sampling_stratification_criteria = this.modelTechnique[0]['model_sampling_stratification_criteria'];
-          this.getModelTechFirst.model_sampling_replacement_criteria = this.modelTechnique[0]['model_sampling_replacement_criteria'];
-          this.getModelTechFirst.model_sampling_training_sample = this.modelTechnique[0]['model_sampling_training_sample'];
-          this.getModelTechFirst.model_sampling_testing_sample = this.modelTechnique[0]['model_sampling_testing_sample'];
+          this.getModelTechFirst.model_sampling_criteria = this.modelTechnique[1]['model_sampling_criteria'];
+          this.getModelTechFirst.model_sampling_stratification_criteria = this.modelTechnique[1]['model_sampling_stratification_criteria'];
+          this.getModelTechFirst.model_sampling_replacement_criteria = this.modelTechnique[1]['model_sampling_replacement_criteria'];
+          this.getModelTechFirst.model_sampling_training_sample = this.modelTechnique[1]['model_sampling_training_sample'];
+          this.getModelTechFirst.model_sampling_testing_sample = this.modelTechnique[1]['model_sampling_testing_sample'];
 
-          this.getModelTechFirst.model_parameters_kfold_valid_parameter = this.modelTechnique[0]['model_parameters_kfold_valid_parameter'];
-          this.getModelTechFirst.model_parameters_family = this.modelTechnique[0]['model_parameters_family'];
-          this.getModelTechFirst.model_parameters_no_tress = this.modelTechnique[0]['model_parameters_no_tress'];
-          this.getModelTechFirst.model_parameters_mtry = this.modelTechnique[0]['model_parameters_mtry'];
-          this.getModelTechFirst.model_parameters_node_size = this.modelTechnique[0]['model_parameters_node_size'];
+          this.getModelTechFirst.model_parameters_kfold_valid_parameter = this.modelTechnique[1]['model_parameters_kfold_valid_parameter'];
+          this.getModelTechFirst.model_parameters_family = this.modelTechnique[1]['model_parameters_family'];
+          this.getModelTechFirst.model_parameters_no_tress = this.modelTechnique[1]['model_parameters_no_tress'];
+          this.getModelTechFirst.model_parameters_mtry = this.modelTechnique[1]['model_parameters_mtry'];
+          this.getModelTechFirst.model_parameters_node_size = this.modelTechnique[1]['model_parameters_node_size'];
 
-          this.getModelTechFirst.model_output_importance = this.modelTechnique[0]['model_output_importance'];
-          this.getModelTechFirst.model_output_fractions = this.modelTechnique[0]['model_output_fractions'];
+          this.getModelTechFirst.model_output_importance = this.modelTechnique[1]['model_output_importance'];
+          this.getModelTechFirst.model_output_fractions = this.modelTechnique[1]['model_output_fractions'];
 
           this.modelTechBool = true;
         }

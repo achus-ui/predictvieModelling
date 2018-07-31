@@ -3,16 +3,19 @@
   <div class="row">
     <div class="col-md-3">
       <ul class="technique-tiles">
-        <li
-          (click)="onShowTechDetails(technique)"
-          [ngClass]="{'active': getModelTechFirst.model_technique_nm === technique.model_technique_nm}"
-          *ngFor="let technique of modelTechnique">{{ technique.model_technique_nm }}
-          <i class="fas fa-angle-right"></i>
-        </li>
+        <div *ngFor="let technique of modelTechnique; let i = index">
+          <li 
+            *ngIf="i === 1"
+            (click)="onShowTechDetails(technique)" 
+            [ngClass]="{'active': getModelTechFirst.model_technique_nm === technique.model_technique_nm}">{{ technique.model_technique_nm }}
+            <i class="fas fa-angle-right"></i>
+          </li>
+        </div>
       </ul>
     </div>
     <div class="col-md-8 offset-md-1">
-      <h2>{{ getModelTechFirst.model_technique_nm }}</h2>
+      <h2>Technique Description:</h2>
+      <p>{{ getModelTechFirst.model_technique_desc }}</p>
       <accordion [closeOthers]="oneAtATime">
         <accordion-group 
           [isOpen]="isFirstOpen"

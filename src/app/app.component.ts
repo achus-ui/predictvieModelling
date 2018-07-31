@@ -14,9 +14,9 @@ export class AppComponent implements OnInit {
     private solutionServie: SolutionService) {}
 
   ngOnInit() {
-    if(this.solutionServie.solutionDetails.name === '') {
-      this.router.navigate(['']);
-    }
+    // if(this.solutionServie.solutionDetails.name === '') {
+    //   this.router.navigate(['']);
+    // }
   }
   
 }
