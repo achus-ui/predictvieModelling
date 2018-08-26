@@ -12,8 +12,8 @@ export class ModeltechniqueService {
     private httpClient: HttpClient
   ) { }
 
-  getModelTechniques() {
-    return this.httpClient.get(this.urlConfig.constants.baseUrl + 'getinfo?of=10&i=0&type=mart&id='+ this.urlConfig.constants.martId +'&t='+ this.urlConfig.constants.token +'&tablename=nbmdc_model_technique')
+  getModelTechniques(selectedModelRowId) {
+    return this.httpClient.get(this.urlConfig.constants.baseUrl + 'getinfo?of=10&i=0&type=mart&id=' + this.urlConfig.constants.martId + '&t=' + this.urlConfig.constants.token + '&tablename=nbmdc_model_technique&an=nbmdc_models_row_id&av=' + selectedModelRowId+'&o==')
   }
 
 

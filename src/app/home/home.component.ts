@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { SolutionService } from '../shared/solution.service';
+import { VariablecollectiveService } from '../shared/variablecollective.service';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +14,8 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private solutionService: SolutionService) { }
+    private solutionService: SolutionService,
+    private variableCollectiveService: VariablecollectiveService) { }
 
   ngOnInit() {
     this.getSolutionList();
@@ -28,7 +30,8 @@ export class HomeComponent implements OnInit {
       );
   }
 
-  goToSolutionDetails(solutionName, solutionDesc) {
+  goToSolutionDetails(solutionName, solutionDesc, solutionRowId) {
+    this.variableCollectiveService.selectedModelId = solutionRowId;
     this.solutionService.solutionDetails.name = solutionName;
     this.solutionService.solutionDetails.desc = solutionDesc;
     this.router.navigate(['/solution-details']);

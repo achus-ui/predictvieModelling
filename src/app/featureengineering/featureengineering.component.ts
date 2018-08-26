@@ -19,11 +19,11 @@ export class FeatureengineeringComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getVariableCollectiveDetails();
+    this.getVariableCollectiveDetails(this.varaibleCollectiveService.selectedModelId);
   }
 
-  getVariableCollectiveDetails() {
-    this.varaibleCollectiveService.getVariableCollectiveDetails()
+  getVariableCollectiveDetails(selectedModelRowId) {
+    this.varaibleCollectiveService.getVariableCollectiveDetails(selectedModelRowId)
       .subscribe(
         (data) => {
           this.variableCollectiveDetailsUnique = data['mart'].reduce((unique, o) => {

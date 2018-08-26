@@ -7,13 +7,15 @@ import { HttpClient } from '@angular/common/http';
 })
 export class VariablecollectiveService {
 
+  public selectedModelId = '';
+
   constructor(
     private urlConfig: AppConfigService,
     private httpClient: HttpClient
   ) { }
 
-  getVariableCollectiveDetails() {
-    return this.httpClient.get(this.urlConfig.constants.baseUrl + 'getinfo?of=50&i=0&type=mart&id=' + this.urlConfig.constants.martId +'&t='+ this.urlConfig.constants.token +'&tablename=nbmdc_model_variables');
+  getVariableCollectiveDetails(selectedModelRowId) {
+    return this.httpClient.get(this.urlConfig.constants.baseUrl + 'getinfo?of=50&i=0&type=mart&id=' + this.urlConfig.constants.martId + '&t=' + this.urlConfig.constants.token +'&tablename=nbmdc_model_variables&an=nbmdc_models_row_id&av='+ selectedModelRowId +'&o==');
   }
 
 

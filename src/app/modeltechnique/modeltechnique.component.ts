@@ -1,5 +1,6 @@
 import { Component, OnInit, DoCheck } from '@angular/core';
 import { ModeltechniqueService } from '../shared/modeltechnique.service';
+import { VariablecollectiveService } from '../shared/variablecollective.service';
 
 @Component({
   selector: 'app-modeltechnique',
@@ -53,22 +54,23 @@ export class ModeltechniqueComponent implements OnInit, DoCheck {
   public modelTechBool: boolean = false;
 
   constructor(
-    private modelTechniqueService: ModeltechniqueService
+    private modelTechniqueService: ModeltechniqueService,
+    private variableCollectiveService: VariablecollectiveService
   ) { }
 
   public oneAtATime: boolean = true;
   public isFirstOpen: boolean = true;
 
   ngOnInit() {
-    this.getModelTechniques();
+    this.getModelTechniques(this.variableCollectiveService.selectedModelId);
   }
 
   ngDoCheck() {
     this.getModelTechFirst = this.receivedModelTechniq;
   }
 
-  getModelTechniques() {
-    this.modelTechniqueService.getModelTechniques()
+  getModelTechniques(selectedModelRowId) {
+    this.modelTechniqueService.getModelTechniques(selectedModelRowId)
       .subscribe(
         (data) => {
           this.modelTechnique = data['mart'];

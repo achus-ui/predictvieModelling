@@ -1,6 +1,6 @@
 <ul class="tiles">
     <li
-        (click)="goToSolutionDetails(solution.model_nm,solution.model_long_desc)" 
+        (click)="goToSolutionDetails(solution.model_nm,solution.model_long_desc,solution.row_id)" 
         *ngFor="let solution of solutionList">
         <i class="fas fa-exclamation-triangle"></i>
         <div class="info">
