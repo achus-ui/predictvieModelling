@@ -11,6 +11,7 @@ import { EarlywarningComponent } from './earlywarning/earlywarning.component';
 import { BusinessvariablesComponent } from './businessvariables/businessvariables.component';
 
 import { AccordionModule } from 'ngx-bootstrap/accordion';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 import { AppConfigService } from './shared/app-config.service';
 import { SolutionService } from './shared/solution.service';
@@ -36,7 +37,8 @@ import { ModeltechniqueService } from './shared/modeltechnique.service';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    AccordionModule.forRoot()
+    AccordionModule.forRoot(),
+    ModalModule.forRoot()
   ],
   providers: [
     AppConfigService,

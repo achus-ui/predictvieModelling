@@ -4,10 +4,8 @@
     <div class="col-md-3">
       <ul class="technique-tiles">
         <div *ngFor="let technique of modelTechnique; let i = index">
-          <li 
-            *ngIf="i === 1"
-            (click)="onShowTechDetails(technique)" 
-            [ngClass]="{'active': getModelTechFirst.model_technique_nm === technique.model_technique_nm}">{{ technique.model_technique_nm }}
+          <li
+            (click)="onShowTechDetails(technique)">{{ technique.model_technique_nm }}
             <i class="fas fa-angle-right"></i>
           </li>
         </div>
@@ -16,10 +14,16 @@
     <div class="col-md-8 offset-md-1">
       <h2>Technique Description:</h2>
       <p>{{ getModelTechFirst.model_technique_desc }}</p>
-      <accordion [closeOthers]="oneAtATime">
+      <accordion 
+        [closeOthers]="oneAtATime">
         <accordion-group 
-          [isOpen]="isFirstOpen"
-          heading="Filters">
+          [isOpen]="isFirstOpen">
+          <button class="btn btn-link btn-block clearfix" accordion-heading>
+            <div class="pull-left float-left">Filters</div>
+          </button>
+          <span (click)="openInfoModal(InfoModal,'Filters')" class="info-desc">
+            <i class="fas fa-info-circle"></i>
+          </span>
           <table class="table table-bordered">
             <tbody>
               <tr>
@@ -33,7 +37,13 @@
             </tbody>
           </table>
         </accordion-group>
-        <accordion-group heading="Sampling">
+        <accordion-group>
+          <button class="btn btn-link btn-block clearfix" accordion-heading>
+            <div class="pull-left float-left">Sampling</div>
+          </button>
+          <span (click)="openInfoModal(InfoModal,'Sampling')" class="info-desc">
+            <i class="fas fa-info-circle"></i>
+          </span>
           <table class="table table-bordered">
             <tbody>
               <tr>
@@ -59,7 +69,13 @@
             </tbody>
           </table>
         </accordion-group>
-        <accordion-group heading="Parameters">
+        <accordion-group>
+          <button class="btn btn-link btn-block clearfix" accordion-heading>
+            <div class="pull-left float-left">Parameters</div>
+          </button>
+          <span (click)="openInfoModal(InfoModal,'Parameters')" class="info-desc">
+            <i class="fas fa-info-circle"></i>
+          </span>
           <table class="table table-bordered">
             <tbody>
               <tr>
@@ -85,7 +101,13 @@
             </tbody>
           </table>
         </accordion-group>
-        <accordion-group heading="Output">
+        <accordion-group>
+          <button class="btn btn-link btn-block clearfix" accordion-heading>
+            <div class="pull-left float-left">Output</div>
+          </button>
+          <span (click)="openInfoModal(InfoModal,'Output')" class="info-desc">
+            <i class="fas fa-info-circle"></i>
+          </span>
           <table class="table table-bordered">
             <tbody>
               <tr>
@@ -103,3 +125,86 @@
     </div>
   </div>
 </section>
+
+<ng-template #InfoModal>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">{{ receivedItemNameForModalDesc }}</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Description</th>
+        </tr>
+      </thead>
+      <tbody *ngIf="receivedItemNameForModalDesc === 'Filters'">
+        <tr>
+          <th>Time Dimension</th>
+          <td>{{ descTableModal[0].model_filters_time_dim }}</td>
+        </tr>
+        <tr>
+          <th>Non-Time Dimension</th>
+          <td>{{ descTableModal[1].model_filters_non_time_dim }}</td>
+        </tr>
+      </tbody>
+      <tbody *ngIf="receivedItemNameForModalDesc === 'Sampling'">
+        <tr>
+          <th>Sampling Criteria</th>
+          <td>{{ descTableModal[0].model_sampling_criteria }}</td>
+        </tr>
+        <tr>
+          <th>Stratification Criteria</th>
+          <td>{{ descTableModal[1].model_sampling_stratification_criteria }}</td>
+        </tr>
+        <tr>
+          <th>Replacement Criteria</th>
+          <td>{{ descTableModal[2].model_sampling_replacement_criteria }}</td>
+        </tr>
+        <tr>
+          <th>Training Sample</th>
+          <td>{{ descTableModal[3].model_sampling_training_sample }}</td>
+        </tr>
+        <tr>
+          <th>Testing Sample</th>
+          <td>{{ descTableModal[4].model_sampling_testing_sample }}</td>
+        </tr>
+      </tbody>
+      <tbody *ngIf="receivedItemNameForModalDesc === 'Parameters'">
+        <tr>
+          <th>K-fold validation Paramater</th>
+          <td>{{ descTableModal[0].model_parameters_kfold_valid_parameter }}</td>
+        </tr>
+        <tr>
+          <th>Family</th>
+          <td>{{ descTableModal[1].model_parameters_family }}</td>
+        </tr>
+        <tr>
+          <th>Number of trees</th>
+          <td>{{ descTableModal[2].model_parameters_no_tress }}</td>
+        </tr>
+        <tr>
+          <th>mtry(No. of variables tried at each split)</th>
+          <td>{{ descTableModal[3].model_parameters_mtry }}</td>
+        </tr>
+        <tr>
+          <th>Node Size</th>
+          <td>{{ descTableModal[4].model_parameters_node_size }}</td>
+        </tr>
+      </tbody>
+      <tbody *ngIf="receivedItemNameForModalDesc === 'Output'">
+        <tr>
+          <th>Importance</th>
+          <td>{{ descTableModal[0].model_output_importance }}</td>
+        </tr>
+        <tr>
+          <th>Fractions</th>
+          <td>{{ descTableModal[1].model_output_fractions }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</ng-template>
